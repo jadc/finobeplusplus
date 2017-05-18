@@ -12,7 +12,7 @@ Install the chrome extension **Tampermonkey** in order to run Finobe++.
 You can download it **[here](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en)**.
 
 ### Step 2
- **[Click here to download it!](https://github.com/jadc/finobeplusplus/raw/master/finobeplusplus.user.js)*
+[Click here to download it!](https://github.com/jadc/finobeplusplus/raw/master/finobeplusplus.user.js)
 
 ### Step 3
 ![](http://i.imgur.com/swUDLNw.png)

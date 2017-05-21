@@ -19,6 +19,8 @@ Join the Discord for Finobe++, [just click here](https://discord.gg/UzPTusy).
 The Discord will only ping you for updates on Finobe++, and is not meant for discussion.
 
 ### Step 3
+![](http://i.imgur.com/sQNh1UT.png)
+
 Wait for a new update, or download the latest one. (the one at the very bottom of the chat)
 
 You download by clicking the link provided.

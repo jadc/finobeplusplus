@@ -2,7 +2,9 @@
 Finobe++ adds enhancements to http://fi.nobelium.xyz with a simple userscript.
 
 ## Screenshots
-_Soon._
+![](http://i.imgur.com/VkhNugd.png)
+![](http://i.imgur.com/Vqsw0wj.png)
+images as of version 1.0
 
 ## How do I get it???
 ### Step 1
@@ -12,8 +14,7 @@ Install the chrome extension **Tampermonkey** in order to run Finobe++.
 You can download it **[here](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en)**.
 
 ### Step 2
-~~[Click here to download it!](https://github.com/jadc/finobeplusplus/raw/master/finobeplusplus.user.js)~~
-Not out yet.
+[Click here to download it!](https://github.com/jadc/finobeplusplus/raw/master/Finobe%2B%2B.user.js)
 
 ### Step 3
 ![](http://i.imgur.com/swUDLNw.png)

@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Finobe++
+// @name         Finobe++ DEV KIT
 // @namespace    Jad Chehimi
 // @version      1.1
-// @description  Makes improvements to Finobe in function and esthetics.
+// @description  !!!!!!!!!!!!!!IF YOU'RE READING THIS, YOU'RE INSTALLING THE WRONG FINOBE++!!!!!!!!!!!
 // @author       Jad Chehimi
 // @match        https://fi.nobelium.xyz/*
 // @grant        none
@@ -19,6 +19,7 @@ The only source that this userscript should be downloaded from is my github @ gi
 
 // extension info
 var version = "1.1";
+console.log("?? You are running Finobe++ version " + version);
 
 // functions & variables
 var url = window.location.href;

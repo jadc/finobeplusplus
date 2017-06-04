@@ -13,17 +13,15 @@ Install the chrome extension **Tampermonkey** in order to run Finobe++.
 
 You can download it **[here](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en)**.
 
-### Step 2
+### Step 2 (optional)
 Join the Discord for Finobe++, [just click here](https://discord.gg/UzPTusy).
 
-The Discord will only ping you for updates on Finobe++, and is not meant for discussion.
+The Discord will only ping you for updates on Finobe++.
 
 ### Step 3
-![](http://i.imgur.com/sQNh1UT.png)
+![](http://i.imgur.com/AJDu9zq.png)
 
-Wait for a new update, or download the latest one. (the one at the very bottom of the chat)
-
-You download by clicking the link provided.
+[Click here to download the Finobe++ installer, with this, Finobe++ will automatically install new updates when they are out.](https://github.com/jadc/finobeplusplus/raw/master/downloads/Finobe%2B%2B%20Installer.user.js)
 
 ## Step 4
 ![](http://i.imgur.com/swUDLNw.png)

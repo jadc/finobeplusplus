@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Finobe++ DEV KIT
 // @namespace    Jad Chehimi
-// @version      1.1
+// @version      1.1.1
 // @description  !!!!!!!!!!!!!!IF YOU'RE READING THIS, YOU'RE INSTALLING THE WRONG FINOBE++!!!!!!!!!!!
 // @author       Jad Chehimi
 // @match        https://fi.nobelium.xyz/*
@@ -18,7 +18,7 @@ The only source that this userscript should be downloaded from is my github @ gi
 *///////////////////////////////////////////////
 
 // extension info
-var version = "1.1";
+var version = "1.1.1";
 console.log("?? You are running Finobe++ version " + version);
 
 // functions & variables
@@ -54,6 +54,8 @@ function universal(){
 		"text-align": "center",
 		"font-size": "12px"
 	});
+	
+	$(".footer .container").children(":first").append("<b> | Finobe++ version:</b> " + version);
 	
 	//this boolean checks if your signed in or not, and modifies the boolean 'signedIn'
 	if($("#navbar-collapse > ul.nav.navbar-nav.my-2.my-lg-0 > li.nav-item.dropdown > a").length){

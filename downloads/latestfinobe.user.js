@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Finobe++ DEV KIT
 // @namespace    Jad Chehimi
-// @version      1.1.1
+// @version      1.1.2
 // @description  !!!!!!!!!!!!!!IF YOU'RE READING THIS, YOU'RE INSTALLING THE WRONG FINOBE++!!!!!!!!!!!
 // @author       Jad Chehimi
 // @match        https://fi.nobelium.xyz/*
@@ -18,7 +18,8 @@ The only source that this userscript should be downloaded from is my github @ gi
 *///////////////////////////////////////////////
 
 // extension info
-var version = "1.1.1";
+var version = "1.1.2";
+console.log("?? Connection established with Finobe++ server");
 console.log("?? You are running Finobe++ version " + version);
 
 // functions & variables
@@ -26,12 +27,15 @@ var url = window.location.href;
 var signedIn;
 var name;
 var owos = $(".n-money-text a").text();
+var activeOnly = false;
 
 // this function, when used like this
 // dir()
 // will return whatever is after the slash in the URL
 // ex. if im on 'fi.nobelium.xyz/forum' then this function returns 'forum' as a string
 function dir() {var parts = url.split("/"); return (url.lastIndexOf('/') !== url.length - 1 ? parts[parts.length - 1] : parts[parts.length - 2]);}
+
+function o(str){console.log("[F++] " + str);}
 
 // anything in here is combined into one string and inserted into <head> as a stylesheet
 var styles = [
@@ -61,11 +65,11 @@ function universal(){
 	if($("#navbar-collapse > ul.nav.navbar-nav.my-2.my-lg-0 > li.nav-item.dropdown > a").length){
 		signedIn = true;
 		name = $("#navbar-collapse > ul.nav.navbar-nav.my-2.my-lg-0 > li.nav-item.dropdown > a").text();
-		console.log("user is signed in");
+		o("User is signed in.");
 	}else{
 		signedIn = false;
 		name = "???";
-		console.log("user is not signed in");
+		o("User is NOT signed in.");
 	}
 }
 
@@ -105,7 +109,7 @@ function landingPage(){
 	}
 	
 	// new cards on the landing page!!
-	if(dir() == "fi.nobelium.xyz" || dir() == "#"){ // if your on the landing page
+	if(dir() == "fi.nobelium.xyz"){ // if your on the landing page
 		var frontUI = $("<div />", {
 			id: "frontUI",
 			"class": "container"
@@ -183,67 +187,53 @@ function settingsPage(){
 	}
 }
 
-var activeOnly = false;
+
 
 function gamesPage(){
 	// plan: new layout for games
 	if(dir() == "games"){ //if on games page
 		// online games only
-		$(".custom-control-indicator").click();
+		$(".custom-control-indicator:not(#activeonly)").click();
 		
 		// new option, games with players only
 		if(true){
-		$("<lable />", {
-			"class":"activeonly btn n-games-btn btn-warning n-btn-games-small",
-			"text":"Active Only (off)"
-		}).appendTo($(".col-md-2 > .card > .card-block"))
-			.click(function(){
-			//activeOnly mechanism
-			console.log("active only pressed");
-			if(!activeOnly){
-				console.log("activeOnly WAS false");
-				$(".activeonly").text("✔ active only").removeClass("btn-warning").addClass("btn-success");
-				activeOnly = true;
-				console.log("activeOnly = " + activeOnly);
-				//
-				filterOutInactive();
-				setInterval(function(){filterOutInactive(); console.log("filtering out");}, 2000);
-			}else{
-				console.log("activeOnly WAS true");
-				$(".activeonly").text("✖ active only").addClass("btn-warning").removeClass("btn-success");
-				activeOnly = false;
-				console.log("activeOnly = " + activeOnly);
-				//
-				filterOutInactive();
-			}
-		});
+		$("<label />", {
+			"class":"custom-control custom-checkbox n-checkbox-small",
+			"id":"activeonly"
+		}).append("<input name=\"aoinput\" type=\"checkbox\" true-value=\"true\" class=\"custom-control-input\">")
+		.append("<span class=\"custom-control-indicator\"></span>")
+		.append("<span class=\"custom-control-description\">Active Only</span>")
+		.appendTo($(".col-md-2 > .card > .card-block"));
+		
+			$('input[name=aoinput]').click(function(){
+				if($('input[name=aoinput]').is(':checked')){
+					o("Active Only Filtering ENABLED. activeOnly was = " + activeOnly);
+					activeOnly = true;
+				
+					$(".gameleft > p > span").each(function(i){
+						if($(this).text() == "Online |  0"){
+							$(this).parent().parent().parent().parent().hide();
+						}
+					});
+				}else{
+					o("Active Only Filtering DISABLED. activeOnly was = " + activeOnly);
+					activeOnly = false;
+				
+					$(".gameleft > p > span").each(function(i){
+						if($(this).text() == "Online |  0"){
+							$(this).parent().parent().parent().parent().show();
+						}
+					});
+				}
+			});
 		}
 		
 		// put games side by side
-		$(".container").css("width","100%");
-		setInterval(function(){
+		//$(".container").css("width","100%");
 			$(".col-md-10 > div").css({
-				"width":"50%",
+				"width":"25%",
 				"float":"left"
 			});
-		}, 3000);
-	}
-}
-
-function filterOutInactive(){
-	console.log("filtering");
-	if(activeOnly){
-		$(".gameleft > p > span").each(function(i){
-			if($(this).text() == "Online |  0"){
-				$(this).parent().parent().parent().parent().hide();
-			}
-		});
-	}else{
-		$(".gameleft > p > span").each(function(i){
-			if($(this).text() == "Online |  0"){
-				$(this).parent().parent().parent().parent().show();
-			}
-		});
 	}
 }
 

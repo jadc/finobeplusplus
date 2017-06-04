@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Finobe++
 // @namespace    Jad Chehimi
-// @version      1.0
-// @description  Makes Finobe SEXY
+// @version      1.1
+// @description  Makes improvements to Finobe in function and esthetics.
 // @author       Jad Chehimi
 // @match        https://fi.nobelium.xyz/*
 // @grant        none
@@ -16,6 +16,9 @@ By using this userscript, you agree to not distribute it with modifications, reg
 The only source that this userscript should be downloaded from is my github @ github.com/jadc/finobeplusplus
 
 *///////////////////////////////////////////////
+
+// extension info
+var version = "1.1";
 
 // functions & variables
 var url = window.location.href;
@@ -33,7 +36,7 @@ function dir() {var parts = url.split("/"); return (url.lastIndexOf('/') !== url
 var styles = [
 	"@keyframes rainbow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }",
 	".frontpage-card { display: inline-flex; margin: 0 10px 0 10px; }",
-	"#frontUI { display: flex; justify-content: center; align-items: center; align-content: center; flex-wrap: wrap; transform: translate(0, -8em);}",
+	"#frontUI { display: flex; justify-content: center; align-items: center; align-content: center; flex-wrap: wrap;}",
 	"#pluschar { transition: 1s transform; }",
 	"#pluschar:hover { transform: scale(1.1) }",
 ];
@@ -105,14 +108,12 @@ function landingPage(){
 			"class": "container"
 		}).appendTo($("#app"));
 		
-		frontUI.appendTo($("#app"));
-		
 		if(signedIn){ //if they are signed in
 			//charpic card
 			createCard("charPic", name, frontUI);
 			$("#charPic")
 				.addClass("frontpage-card")
-				.css({"width":"240px", "display":"block", "margin":"0 auto"})
+				.css({ "display":"block", "margin":"0 auto"})
 				.appendTo(frontUI);
 			
 			// pencil icon
@@ -132,7 +133,15 @@ function landingPage(){
 			// divider
 			$("<hr/>").appendTo($("#charPic .card-block"));
 			
-			// currency (owos) icon
+			//currency (owo) count
+			$("<div />", {
+				id:"owoCountContainer",
+				css: {
+					"width":"100%",
+					"height":"2em"
+				}
+			}).appendTo($("#charPic .card-block"));
+			
 			var owoIcon = $("<img />", {
 				src: "https://fi.nobelium.xyz/img/owo_16.png",
 				css: {
@@ -142,21 +151,20 @@ function landingPage(){
 					"float":"left",
 					"margin-right":"10px"
 				}
-			}).appendTo($("#charPic .card-block"));
+			}).appendTo($("#owoCountContainer"));
 			
 			$("<h1 />", {
 				text: owos,
 				css: {
 					"line-height":"0.75em"
 				}
-			}).appendTo($("#charPic .card-block"));
+			}).appendTo($("#owoCountContainer"));
 		}
 		
 		createCard("buttonscard","Navigation",frontUI);
 		$("#buttonscard")
 			.addClass("frontpage-card")
-			.addClass("card mb-4")
-			.css("width","30em");
+			.addClass("card mb-4");
 		
 		// ////////////////////////////////////////////////////////////////
 		

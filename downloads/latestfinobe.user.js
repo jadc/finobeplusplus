@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Finobe++ DEV KIT
 // @namespace    Jad Chehimi
-// @version      1.1.2
+// @version      1.2.0
 // @description  !!!!!!!!!!!!!!IF YOU'RE READING THIS, YOU'RE INSTALLING THE WRONG FINOBE++!!!!!!!!!!!
 // @author       Jad Chehimi
 // @match        https://fi.nobelium.xyz/*
@@ -18,7 +18,7 @@ The only source that this userscript should be downloaded from is my github @ gi
 *///////////////////////////////////////////////
 
 // extension info
-var version = "1.1.2";
+var version = "1.2.0";
 console.log("?? Connection established with Finobe++ server");
 console.log("?? You are running Finobe++ version " + version);
 
@@ -44,6 +44,7 @@ var styles = [
 	"#frontUI { display: flex; justify-content: center; align-items: center; align-content: center; flex-wrap: wrap;}",
 	"#pluschar { transition: 1s transform; }",
 	"#pluschar:hover { transform: scale(1.1) }",
+	"@keyframes janky { 0%, 50%, 100% { background: url(img/homeback.jpg) no-repeat center center fixed } }"
 ];
 
 // modifications that effect the whole site
@@ -99,17 +100,42 @@ function createCard(classID, title, location){
 }
 
 function landingPage(){
+	if(dir() == "fi.nobelium.xyz"){ // if your on the landing page
 	// Modifying giant logo on landing page
-	$(".homepage-center p img").css("animation","5s rainbow infinite linear");
-	// changes text on landing page depending on if your signed in or not
+	$("#app > div.container.main-content > div:nth-child(1) > img")
+		.attr("src","http://fi.nobelium.xyz/img/BUSY.png")
+		.css({
+		"animation" : "5s rainbow infinite linear",
+		"padding" : "1em 0 1em 0",
+		"width" : "12em",
+		"height" : "21em"
+	});
+	
+	// remove finobe info when signed in
 	if(signedIn){
-		$(".homepage-center h2").text("Welcome back, " + name);
-	}else{
-		$(".homepage-center h2").text("Welcome to Finobe");
+		$("#app > div.container.main-content > div.text-center.mb-4.card").hide();
 	}
 	
+	// background still
+	$("body").css("animation","0 !important");
+		
+	// circle buttons & black
+	$("#app > div.container.main-content > div:nth-child(2) > a").css({
+		"border-radius":"100%",
+		"width":"64px",
+		"height":"64px",
+		"line-height":"42px",
+		"margin":"0 3px 0 3px"
+	});
+		
+	// transparent navbar
+	$("nav").css({
+		"background":"none",
+		"border":"none"
+	});
+	
+	
 	// new cards on the landing page!!
-	if(dir() == "fi.nobelium.xyz"){ // if your on the landing page
 		var frontUI = $("<div />", {
 			id: "frontUI",
 			"class": "container"
@@ -168,15 +194,15 @@ function landingPage(){
 			}).appendTo($("#owoCountContainer"));
 		}
 		
-		createCard("buttonscard","Navigation",frontUI);
-		$("#buttonscard")
-			.addClass("frontpage-card")
-			.addClass("card mb-4");
+		//createCard("buttonscard","Navigation",frontUI);
+		//$("#buttonscard")
+			//.addClass("frontpage-card")
+			//.addClass("card mb-4");
 		
 		// ////////////////////////////////////////////////////////////////
 		
 		//  NOW new buttons!
-		$("<p>more things will be put here in the next update</p>").appendTo($("#buttonscard .card-block"));
+		//$("<p>more things will be put here in the next update</p>").appendTo($("#buttonscard .card-block"));
 		
 	}
 }
@@ -227,13 +253,6 @@ function gamesPage(){
 				}
 			});
 		}
-		
-		// put games side by side
-		//$(".container").css("width","100%");
-			$(".col-md-10 > div").css({
-				"width":"25%",
-				"float":"left"
-			});
 	}
 }
 

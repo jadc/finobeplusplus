@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Finobe++ DEV KIT
 // @namespace    Jad Chehimi
-// @version      1.2.0
+// @version      1.2.1
 // @description  !!!!!!!!!!!!!!IF YOU'RE READING THIS, YOU'RE INSTALLING THE WRONG FINOBE++!!!!!!!!!!!
 // @author       Jad Chehimi
 // @match        https://fi.nobelium.xyz/*
@@ -65,7 +65,7 @@ function universal(){
 	//this boolean checks if your signed in or not, and modifies the boolean 'signedIn'
 	if($("#navbar-collapse > ul.nav.navbar-nav.my-2.my-lg-0 > li.nav-item.dropdown > a").length){
 		signedIn = true;
-		name = $("#navbar-collapse > ul.nav.navbar-nav.my-2.my-lg-0 > li.nav-item.dropdown > a").text();
+		name = $("#navbar-collapse > ul.nav.navbar-nav.my-2.my-lg-0 > li.nav-item.dropdown > a").text().substring(5);
 		o("User is signed in.");
 	}else{
 		signedIn = false;

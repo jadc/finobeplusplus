@@ -18,7 +18,7 @@ The only source that this userscript should be downloaded from is my github @ gi
 *///////////////////////////////////////////////
 
 // extension info
-var version = "1.2.0";
+var version = "1.2.1";
 console.log("?? Connection established with Finobe++ server");
 console.log("?? You are running Finobe++ version " + version);
 
@@ -176,7 +176,7 @@ function landingPage(){
 			}).appendTo($("#charPic .card-block"));
 			
 			var owoIcon = $("<img />", {
-				src: "https://fi.nobelium.xyz/img/owo_16.png",
+				src: "https://fi.nobelium.xyz/img/diu_16.png",
 				css: {
 					"width":"32px",
 					"height":"32px",

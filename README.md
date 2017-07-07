@@ -5,6 +5,10 @@ Finobe++ adds enhancements to http://fi.nobelium.xyz with a simple userscript.
 ![](http://i.imgur.com/VkhNugd.png)
 ![](http://i.imgur.com/Vqsw0wj.png)
 images as of version 1.0
+![](http://i.imgur.com/UZUcRYG.png)
+latest version before finobe shutdown
+![](http://i.imgur.com/53DkkDH.png)
+unrelated photo
 
 ## How do I get it???
 ### Step 1
